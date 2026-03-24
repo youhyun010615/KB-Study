@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <img v-bind:src="imgSrc" />
+    </div>
+    <script>
+      Vue.createApp({
+        name: 'App',
+        data() {
+          return {
+            imgSrc:
+              'https://m.health.chosun.com/site/data/img_dir/2023/06/20/2023062002262_0.jpg',
+          };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

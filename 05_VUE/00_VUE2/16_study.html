@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+    <style>
+      .bg-orange {
+        background-color: orange;
+      }
+      .bg-skyblue {
+        background-color: skyblue;
+      }
+    </style>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1 v-bind:class="myStyle">배경은?</h1>
+      <button v-on:click="toggleStyle">배경 토글</button>
+    </div>
+    <script>
+      Vue.createApp({
+        name: 'App',
+        data() {
+          return {
+            isOrange: true,
+          };
+        },
+        methods: {
+          toggleStyle() {
+            this.isOrange = !this.isOrange;
+          },
+        },
+        computed: {
+          myStyle() {
+            return this.isOrange ? 'bg-orange' : 'bg-skyblue';
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>제가 좋아하는 음식들</h1>
+      <label for="category">카페고리 선택 </label>
+      <select id="category" v-model="selectedCategory">
+        <option value="all">전체</option>
+        <option value="korean">한식</option>
+        <option value="japanese">일식</option>
+        <option value="chinese">중식</option>
+      </select>
+
+      <ul>
+        <li v-for="(food, index) in foods" :key="index">{{food.food}}</li>
+      </ul>
+    </div>
+    <script>
+      Vue.createApp({
+        name: 'App',
+        data() {
+          return {
+            foods: [],
+            baseUrl:
+              'https://port-0-kb7-back-node-mmc3pmla14c7b8b4.sel3.cloudtype.app',
+            selectedCategory: 'all',
+          };
+        },
+        methods: {
+          async fetchFoodsByCategory(category) {
+            try {
+              const response = await fetch(`${this.baseUrl}/food/${category}`);
+              this.foods = await response.json();
+              console.log(`========== this.foods: ${this.foods}`);
+            } catch (e) {
+              console.error(`error 발생====> ${e}`);
+            }
+          },
+          async sendUserData() {
+            try {
+              const response = await fetch(`${this.baseUrl}/food/all`);
+              console.log('data 전송 완료');
+            } catch (err) {
+              console.error(err);
+            }
+          },
+        },
+        computed: {
+          filteredFoods() {
+            if (this.selectedCategory == 'all') return this.foods;
+
+            return this.foods.filter((food, index) => {
+              return food.category === this.selectedCategory;
+            });
+          },
+        },
+        watch: {
+          selectedCategory(changeCategory) {
+            this.fetchFoodsByCategory(changeCategory);
+          },
+        },
+        mounted() {
+          this.fetchFoodsByCategory(this.selectedCategory);
+        },
+        unmounted() {
+          (this, sendUserData());
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>
