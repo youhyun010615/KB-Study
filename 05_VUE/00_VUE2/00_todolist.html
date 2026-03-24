@@ -19,10 +19,10 @@
           v-for="(todo, index) in todolist"
           v-bind:key="todo.id"
           v-bind:class="todo.completed ? 'completed' : ''"
-          v-on:click.self="toggleCompleted(todo.id)"
+          v-on:click="toggleCompleted(todo.id)"
         >
           {{ todo.text }}
-          <button v-on:click="deleteTodo(todo.id)">삭제</button>
+          <button v-on:click.stop="deleteTodo(todo.id)">삭제</button>
         </li>
       </ul>
     </div>
@@ -58,9 +58,7 @@
             });
           },
           toggleCompleted(id) {
-            const target = this.todolist.find((item) => {
-              return id === item.id;
-            });
+            const target = this.todolist.find((item) => id === item.id);
 
             if (target) target.completed = !target.completed;
           },

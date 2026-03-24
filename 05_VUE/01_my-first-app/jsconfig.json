@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ESNext", // 최신 자바스크립트 문법 지원
+    "module": "ESNext",
+    "lib": ["ESNext", "DOM"], // 브라우저 관련 자동 완성 지원
+    "baseUrl": ".", // 기준 경로 설정
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}
