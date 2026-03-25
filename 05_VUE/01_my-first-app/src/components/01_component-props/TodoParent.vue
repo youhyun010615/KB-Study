@@ -6,11 +6,13 @@
     <TodoPropsChild todo="뷰 공부하기" />
     <TodoPropsChild todo="배열 함수 연습하기" />
     <TodoComponentChild />
+    <TodoEventChild v-bind:parentEvent="sendingEvent" />
   </div>
 </template>
 
 <script>
 import TodoComponentChild from './TodoComponentChild.vue';
+import TodoEventChild from './TodoEventChild.vue';
 import TodoPropsChild from './TodoPropsChild.vue';
 
 export default {
@@ -18,6 +20,12 @@ export default {
   components: {
     TodoComponentChild,
     TodoPropsChild,
+    TodoEventChild,
+  },
+  methods: {
+    sendingEvent() {
+      alert('부모 컴포넌트 님이 말씀하셨다~ 비상!!!!');
+    },
   },
 };
 </script>
