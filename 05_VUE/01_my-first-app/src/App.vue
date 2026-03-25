@@ -1,9 +1,13 @@
 <script setup>
-import TodoParent from './components/01_component-props/TodoParent.vue';
+import ColorEmitParent from './components/02_emit/ColorEmitParent.vue';
+import VmodelEmitParent from './components/02_emit/VmodelEmitParent.vue';
+import NamedSlotParent from './components/03_slot-teleport/NamedSlotParent.vue';
+import SlotParent from './components/03_slot-teleport/slotParent.vue';
+import TeleportParent from './components/03_slot-teleport/TeleportParent.vue';
 </script>
 
 <template>
-  <TodoParent />
+  <TeleportParent />
 </template>
 
 <style scoped></style>
