@@ -22,7 +22,7 @@ const props = defineProps({
 const emit = defineEmits(['submit']);
 
 const submit = () => {
-  attempt++;
+  attempt.value++;
 
   if (props.answer > userInput.value) msg.value = 'UP';
   else if (props.answer < userInput.value) msg.value = 'DOWN';

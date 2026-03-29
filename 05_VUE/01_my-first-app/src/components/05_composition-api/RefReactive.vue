@@ -1,21 +1,25 @@
 <template>
   <div>
-    <h1>Vue3 Counter</h1>
-    <h1>Count : {{ count }}</h1>
-    <h1>두배로 : {{ double }}</h1>
-    <button @click="increment">+</button>
+    <h1>아아 꿈을 꾸었습니다. 제가 차은우가 되는 꿈을...</h1>
+    <h1>Ref Data : {{ refData.name }}</h1>
+    <h1>Reactive Data : {{ reactiveData.name }}</h1>
+    <button @click="changeRef">Ref 데이터 변경</button>
+    <button @click="changeReactive">Reactive 데이터 변경</button>
   </div>
 </template>
 
-<script setup>
-import { ref, computed } from 'vue';
+<script>
+import { reactive, ref } from 'vue';
 
-const count = ref(0);
-const double = computed(() => {
-  return count.value * 2;
-});
+const refData = ref({ name: '권유현' });
+let reactiveData = reactive({ name: '권유현' });
 
-function increment() {
-  count.value++;
-}
+const changeRef = () => {
+  refData.value = { name: '차은우' };
+};
+const changeReactive = () => {
+  reactiveData = { name: '차은우' };
+};
 </script>
+
+<style scoped></style>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <input type="text" v-model.trim="userInput" />
-    <button @click="emit('send-msg', userInput)"
+    <button @click="emit('send-msg', userInput)">부모님께 전송</button>
   </div>
 </template>
 
