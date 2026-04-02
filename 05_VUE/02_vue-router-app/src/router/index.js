@@ -32,6 +32,16 @@ const router = createRouter({
       name: 'notfound',
       component: () => import('@/views/NotFound.vue'),
     },
+    {
+      path: '/cors',
+      name: 'cors',
+      component: () => import('@/views/CorsView.vue'),
+    },
+    {
+      path: '/cors-ex',
+      name: 'cors-ex',
+      component: () => import('@/views/CorsExView.vue'),
+    },
   ],
 });
 
